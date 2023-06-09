@@ -2,6 +2,8 @@ import {useState} from 'react'
 
 const PawsRatingInput = ({ rating, disabled, onChange }) => {
 
+  const [activeRating, setActiveRating] = useState(rating);
+
   return (
     <>
     <input
@@ -12,22 +14,36 @@ const PawsRatingInput = ({ rating, disabled, onChange }) => {
     />
 
     <div className="rating-input">
-      <div className= {rating >=  1 ? "filled" : "empty" }>
+      <div className= {activeRating >=  1 ? "filled" : "empty" }
+
+      onMouseEnter={disabled ? setActiveRating(rating) : () => setActiveRating(1)}
+      onMouseLeave={ () => setActiveRating(rating)}>
         <i className="fa fa-paw"/>
       </div>
-      <div className={rating >=  2 ? "filled" : "empty" }>
+      <div className={activeRating >=  2 ? "filled" : "empty" }
+
+      onMouseEnter={() => setActiveRating(2)}
+      onMouseLeave={() => setActiveRating(rating)}>
         <i className="fa fa-paw"/>
       </div>
-      <div className={rating >=  3 ? "filled" : "empty" }>
+      <div className={activeRating >=  3 ? "filled" : "empty" }
+
+      onMouseEnter={() => setActiveRating(3)}
+      onMouseLeave={() => setActiveRating(rating)}>
         <i className="fa fa-paw"/>
       </div>
-      <div className={rating >=  4 ? "filled" : "empty" }>
+      <div className={activeRating >=  4 ? "filled" : "empty" }
+      onMouseEnter={() => setActiveRating(4)}
+      onMouseLeave={() => setActiveRating(rating)}>
         <i className="fa fa-paw"/>
       </div>
-      <div className={rating >=  5 ? "filled" : "empty" }>
+      <div className={activeRating >=  5 ? "filled" : "empty" }
+
+      onMouseEnter={() => setActiveRating(5)}
+      onMouseLeave={() => setActiveRating(rating)}>
         <i className="fa fa-paw"/>
       </div>
-      
+
     </div>
     </>
   );
